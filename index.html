@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimonTech | Professional Web Development in Eswatini</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #00ccff;
+            --accent: #ff6600;
+            --dark: #0a192f;
+            --darker: #020c1b;
+            --text: #e6f1ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            background: linear-gradient(rgba(2, 12, 27, 0.9), rgba(2, 12, 27, 0.95));
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #a8b2d1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.3);
+            border: 3px solid var(--primary);
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 5rem 0;
+            background: var(--dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 102, 204, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Services/Pricing */
+        .services {
+            padding: 5rem 0;
+            background: var(--darker);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid rgba(0, 102, 204, 0.3);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1.5rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #a8b2d1;
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .plan-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--text);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .plan-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* About */
+        .about {
+            padding: 5rem 0;
+            background: var(--dark);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            border: 3px solid var(--accent);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: var(--darker);
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 102, 204, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .phone-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0.5rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #020c1b;
+            padding: 3rem 0 1.5rem;
+            border-top: 2px solid var(--primary);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a8b2d1;
+        }
+
+        /* Modal for Plan Details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            border: 3px solid var(--primary);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .modal-plan-title {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="SimonTech Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">My Skills</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>SimonTech Web Development</h1>
+                    <p>Hi, I'm <strong>Lihle Simon Mthembu</strong>, a 15-year-old web developer from Eswatini. I build professional, affordable websites for local businesses. Let's grow your online presence together!</p>
+                    
+                    <div class="contact-buttons">
+                        <a href="tel:+26876800845" class="contact-btn">
+                            <i class="fas fa-phone"></i> Call: 76800845
+                        </a>
+                        <a href="https://wa.me/26878014550" target="_blank" class="contact-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> WhatsApp: 78014550
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="me1.png" alt="Lihle Simon Mthembu - Formal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Technical Skills</h2>
+                <p>What I can build for your business</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML5 & CSS3</h3>
+                    <p>Clean, semantic code that works on all devices. Mobile-first responsive design that looks great on phones, tablets, and desktops.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>Interactive features, forms validation, animations, and dynamic content to make your website engaging and functional.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python Basics</h3>
+                    <p>Backend functionality, data processing, and automation to make your website smarter and more efficient.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Website Packages</h2>
+                <p>Choose the perfect package for your business needs</p>
+            </div>
+            <div class="services-grid">
+                <!-- Startup Package -->
+                <div class="service-card">
+                    <h3>Startup Package</h3>
+                    <div class="price">E500 <span>one-time</span></div>
+                    <ul class="feature-list">
+                        <li>3-Page Professional Website</li>
+                        <li>Mobile Responsive Design</li>
+                        <li>Basic SEO Optimization</li>
+                        <li>Contact Form</li>
+                        <li>WhatsApp Integration</li>
+                        <li>1 Year Free Hosting*</li>
+                        <li>Delivery: 3-5 Days</li>
+                    </ul>
+                    <button class="plan-btn" onclick="showPlanDetails('startup')">
+                        View Details & Contact Me
+                    </button>
+                </div>
+
+                <!-- Professional Package -->
+                <div class="service-card" style="border-color: var(--accent);">
+                    <h3>Professional Package</h3>
+                    <div class="price">E800 <span>one-time</span></div>
+                    <ul class="feature-list">
+                        <li>5-Page Custom Website</li>
+                        <li>Advanced Mobile Design</li>
+                        <li>Enhanced SEO Setup</li>
+                        <li>Photo Gallery</li>
+                        <li>Social Media Integration</li>
+                        <li>3 Months Free Maintenance</li>
+                        <li>1 Year Free Hosting*</li>
+                        <li>Delivery: 5-7 Days</li>
+                    </ul>
+                    <button class="plan-btn" onclick="showPlanDetails('professional')" style="border-color: var(--accent);">
+                        View Details & Contact Me
+                    </button>
+                </div>
+
+                <!-- Business Package -->
+                <div class="service-card">
+                    <h3>Business Package</h3>
+                    <div class="price">E1,500 <span>one-time</span></div>
+                    <ul class="feature-list">
+                        <li>7+ Pages Custom Design</li>
+                        <li>E-Commerce Ready</li>
+                        <li>Advanced SEO & Analytics</li>
+                        <li>Admin Dashboard</li>
+                        <li>Database Integration</li>
+                        <li>6 Months Free Maintenance</li>
+                        <li>Priority Support</li>
+                        <li>1 Year Free Hosting*</li>
+                        <li>Delivery: 7-10 Days</li>
+                    </ul>
+                    <button class="plan-btn" onclick="showPlanDetails('business')">
+                        View Details & Contact Me
+                    </button>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #a8b2d1;">
+                * Hosting included for first year only. Renewal: E600/year
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="me2.png" alt="Lihle Simon - Casual">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm <strong>Lihle Simon Mthembu</strong>, a passionate 15-year-old web developer based in Eswatini. I started coding to solve real problems and help local businesses establish their online presence.</p>
+                    
+                    <p>What makes me different?</p>
+                    <ul class="feature-list">
+                        <li><strong>Young & Tech-Savvy:</strong> I understand modern web trends</li>
+                        <li><strong>Local Understanding:</strong> I know what works in Eswatini market</li>
+                        <li><strong>Affordable Pricing:</strong> Professional quality at local prices</li>
+                        <li><strong>Quick Delivery:</strong> Most websites ready in 3-7 days</li>
+                        <li><strong>Ongoing Support:</strong> I'm here even after project completion</li>
+                    </ul>
+                    
+                    <div class="contact-buttons" style="margin-top: 2rem;">
+                        <a href="https://wa.me/26878014550" target="_blank" class="contact-btn whatsapp-btn">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Ready to start your website project?</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone Call</h3>
+                    <div class="phone-number">76800845</div>
+                    <p>Monday - Saturday<br>9:00 AM - 6:00 PM</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <div class="phone-number">78014550</div>
+                    <p>Fastest response<br>Usually within 1 hour</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Based in Eswatini</p>
+                    <p>Serving clients nationwide</p>
+                    <p>Online consultations available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>SimonTech</h3>
+                    <p>Professional web development services for Eswatini businesses. Building your digital presence with care and expertise.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul class="feature-list">
+                        <li><a href="#home" style="color: var(--text); text-decoration: none;">Home</a></li>
+                        <li><a href="#skills" style="color: var(--text); text-decoration: none;">My Skills</a></li>
+                        <li><a href="#services" style="color: var(--text); text-decoration: none;">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Business Info</h3>
+                    <p>Developer: Lihle Simon Mthembu</p>
+                    <p>Age: 15 Years Old</p>
+                    <p>Location: Eswatini</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 SimonTech. All rights reserved. | Professional Web Development in Eswatini</p>
+                <p>Website by Lihle Simon Mthembu | Call: 76800845 | WhatsApp: 78014550</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Plan Details Modal -->
+    <div id="planModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 class="modal-plan-title" id="modalPlanTitle">Package Details</h2>
+            <div id="modalPlanContent">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <p>Ready to proceed? Contact me directly:</p>
+                <div class="contact-buttons" style="justify-content: center;">
+                    <a href="tel:+26876800845" class="contact-btn">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/26878014550" target="_blank" class="contact-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Plan Details Data
+        const planDetails = {
+            startup: {
+                title: "Startup Package - E500",
+                features: [
+                    "Perfect for new businesses getting online",
+                    "3 professionally designed pages",
+                    "Mobile-friendly on all devices",
+                    "Basic SEO for Google visibility",
+                    "Contact form to capture leads",
+                    "WhatsApp button for quick contact",
+                    "1 year free hosting included",
+                    "Delivery within 3-5 working days"
+                ],
+                process: [
+                    "1. You share your business details",
+                    "2. I design 1-2 layout options",
+                    "3. You choose and provide content",
+                    "4. I build and launch your site",
+                    "5. You get training on managing it"
+                ]
+            },
+            professional: {
+                title: "Professional Package - E800",
+                features: [
+                    "Best for growing businesses",
+                    "5 custom-designed pages",
+                    "Advanced mobile responsiveness",
+                    "Enhanced SEO setup",
+                    "Photo gallery for products/services",
+                    "Social media integration",
+                    "3 months free maintenance",
+                    "1 year free hosting included",
+                    "Delivery within 5-7 working days"
+                ],
+                process: [
+                    "1. Detailed consultation about your needs",
+                    "2. Custom design mockups",
+                    "3. Content organization assistance",
+                    "4. Development with regular updates",
+                    "5. Testing on all devices",
+                    "6. Launch and basic training",
+                    "7. 3 months support included"
+                ]
+            },
+            business: {
+                title: "Business Package - E1,500",
+                features: [
+                    "Complete online solution",
+                    "7+ pages with custom design",
+                    "E-commerce ready (add products anytime)",
+                    "Advanced SEO & Google Analytics",
+                    "Admin dashboard for easy updates",
+                    "Database for customer/products",
+                    "6 months free maintenance",
+                    "Priority WhatsApp support",
+                    "1 year free hosting included",
+                    "Delivery within 7-10 working days"
+                ],
+                process: [
+                    "1. Comprehensive business analysis",
+                    "2. Custom design with 3 revisions",
+                    "3. Content strategy planning",
+                    "4. Development with daily updates",
+                    "5. Thorough testing phase",
+                    "6. Launch and full training",
+                    "7. 6 months premium support",
+                    "8. Monthly performance reports"
+                ]
+            }
+        };
+
+        function showPlanDetails(plan) {
+            const modal = document.getElementById('planModal');
+            const title = document.getElementById('modalPlanTitle');
+            const content = document.getElementById('modalPlanContent');
+            
+            const details = planDetails[plan];
+            
+            title.textContent = details.title;
+            
+            content.innerHTML = `
+                <h3 style="color: var(--secondary); margin-bottom: 1rem;">What's Included:</h3>
+                <ul class="feature-list">
+                    ${details.features.map(feature => `<li>${feature}</li>`).join('')}
+                </ul>
+                
+                <h3 style="color: var(--secondary); margin-top: 2rem; margin-bottom: 1rem;">How It Works:</h3>
+                <ul class="feature-list">
+                    ${details.process.map(step => `<li>${step}</li>`).join('')}
+                </ul>
+                
+                <div style="background: rgba(0,102,204,0.1); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                    <p><strong>Payment Terms:</strong> 50% deposit to start, 50% on completion</p>
+                    <p><strong>Payment Methods:</strong> Bank transfer, Mobile Money, Cash</p>
+                    <p><strong>Hosting Note:</strong> Free for first year, E600/year renewal</p>
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('planModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('planModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
